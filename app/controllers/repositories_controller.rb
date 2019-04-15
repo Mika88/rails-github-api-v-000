@@ -1,9 +1,7 @@
 class RepositoriesController < ApplicationController
 
   def index
-    response = Faraday.get("https://github.com/user") do |req|
-    req.body = { 'client_id': ENV['GITHUB_CLIENT_ID'], 'client_secret': ENV['GITHUB_CLIENT_SECRET'] }
-    req.headers['Accept'] = 'application/json'
+    response = Faraday.get("https://github.com/user") 
   end
 
     body = JSON.parse(response.body)
