@@ -1,6 +1,8 @@
 class RepositoriesController < ApplicationController
 
   def index
-    user = Faraday.get "https://github.com/user"
+    response = Faraday.get "https://github.com/user"
+    body = JSON.parse(user.body)
+    @user = body["login"]
   end
 end
